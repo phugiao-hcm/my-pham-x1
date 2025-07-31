@@ -30,13 +30,13 @@
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <NuxtLink
-          to="/products"
+          to="/products/0"
           class="bg-white text-black px-6 py-3 rounded-full text-lg font-medium hover:bg-gray-300 transition"
         >
           Khám phá sản phẩm
         </NuxtLink>
         <NuxtLink
-          to="/about"
+          to="/"
           class="border border-white text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-white hover:text-black transition"
         >
           Tìm hiểu thêm

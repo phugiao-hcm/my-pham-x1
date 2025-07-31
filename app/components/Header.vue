@@ -20,15 +20,15 @@
 
     <!-- Navigation -->
     <nav class="flex items-center gap-6 text-sm font-medium">
-      <NuxtLink to="/products" class="hover:text-pink-400 transition"
+      <NuxtLink to="/products/0" class="hover:text-pink-400 transition"
         >Sản phẩm</NuxtLink
       >
-      <NuxtLink to="/about" class="hover:text-pink-400 transition"
+      <NuxtLink to="/" class="hover:text-pink-400 transition"
         >Về chúng tôi</NuxtLink
       >
 
       <!-- Cart Icon with badge -->
-      <NuxtLink to="/cart" class="relative hover:text-pink-400 transition">
+      <NuxtLink to="/" class="relative hover:text-pink-400 transition">
         🛒
         <span
           class="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"

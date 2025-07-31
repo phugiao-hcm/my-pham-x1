@@ -5,7 +5,7 @@
     <h1 class="text-xl font-bold">Mỹ Phẩm Xinh</h1>
     <nav class="space-x-4">
       <NuxtLink to="/">Trang chủ</NuxtLink>
-      <NuxtLink to="/cart">Giỏ hàng</NuxtLink>
+      <NuxtLink to="/">Giỏ hàng</NuxtLink>
     </nav>
   </header>
 </template>
