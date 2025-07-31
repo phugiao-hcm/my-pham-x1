@@ -54,7 +54,7 @@ const products = [
     price: 350000,
     description:
       "Chiết xuất từ thiên nhiên, giúp làm sáng và dưỡng ẩm da hiệu quả.",
-    image: "/images/1.png",
+    image: "images/1.png",
   },
   {
     id: 1,
@@ -62,7 +62,7 @@ const products = [
     price: 150000,
     description:
       "Chiết xuất từ thiên nhiên, giúp làm sáng và dưỡng ẩm da hiệu quả.",
-    image: "/images/2.png",
+    image: "images/2.png",
   },
   {
     id: 1,
@@ -70,7 +70,7 @@ const products = [
     price: 1250000,
     description:
       "Chiết xuất từ thiên nhiên, giúp làm sáng và dưỡng ẩm da hiệu quả.",
-    image: "/images/3.png",
+    image: "images/3.png",
   },
   {
     id: 1,
@@ -78,7 +78,7 @@ const products = [
     price: 450000,
     description:
       "Chiết xuất từ thiên nhiên, giúp làm sáng và dưỡng ẩm da hiệu quả.",
-    image: "/images/4.png",
+    image: "images/4.png",
   },
   {
     id: 1,
@@ -86,7 +86,7 @@ const products = [
     price: 120000,
     description:
       "Chiết xuất từ thiên nhiên, giúp làm sáng và dưỡng ẩm da hiệu quả.",
-    image: "/images/5.png",
+    image: "images/5.png",
   },
   {
     id: 1,
@@ -94,7 +94,7 @@ const products = [
     price: 320000,
     description:
       "Chiết xuất từ thiên nhiên, giúp làm sáng và dưỡng ẩm da hiệu quả.",
-    image: "/images/6.png",
+    image: "images/6.png",
   },
 ];
 </script>
