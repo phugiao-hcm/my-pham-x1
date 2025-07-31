@@ -1,35 +1,44 @@
-name: Deploy to GitHub Pages
+name: Deploy Nuxt to GitHub Pages
 
 on:
     push:
         branches:
-            - main # Hoặc 'master' tùy theo tên nhánh chính của bạn
+            - main
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
 
 jobs:
-    deploy:
+    build:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout code
+            - name: Checkout repository
               uses: actions/checkout@v3
 
-            - name: Use Node.js 20
+            - name: Use Node.js v20
               uses: actions/setup-node@v3
               with:
-                  node-version: "20.19.0" # Nuxt 4 cần Node >=20.19.0 hoặc >=22.12.0
+                  node-version: "20.19.0"
                   cache: "yarn"
 
             - name: Install dependencies
               run: yarn install --frozen-lockfile
 
-            - name: Generate static site
-              run: yarn generate
+            - name: Build for GitHub Pages
+              run: npx nuxt build --preset github_pages
 
-            - name: Build Project
-              run: yarn build
-
-            - name: Deploy to GitHub Pages
-              uses: peaceiris/actions-gh-pages@v3
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: "/dist"
+                  path: .output/public
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy to GitHub Pages
+              uses: actions/deploy-pages@v4
