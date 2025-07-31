@@ -1,19 +1,32 @@
-steps:
-    - uses: actions/checkout@v3
+name: Deploy to GitHub Pages
 
-    - name: Use Node.js 20
-      uses: actions/setup-node@v3
-      with:
-          node-version: "20.19.0" # Hoặc '22.12.0'
+on:
+    push:
+        branches:
+            - main # Hoặc 'master' tùy theo tên nhánh chính của bạn
 
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
 
-    - name: Build
-      run: yarn build
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .output/public
+            - name: Use Node.js 20
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "20.19.0" # Nuxt 4 cần Node >=20.19.0 hoặc >=22.12.0
+                  cache: "yarn"
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Generate static site
+              run: yarn generate
+
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: .output/public
