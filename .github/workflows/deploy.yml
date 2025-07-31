@@ -1,33 +1,19 @@
-name: Deploy Nuxt App to GitHub Pages
+steps:
+    - uses: actions/checkout@v3
 
-on:
-    push:
-        branches:
-            - main
+    - name: Use Node.js 20
+      uses: actions/setup-node@v3
+      with:
+          node-version: "20.19.0" # Hoặc '22.12.0'
 
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
 
-        steps:
-            - name: Checkout 🛎️
-              uses: actions/checkout@v3
+    - name: Build
+      run: yarn build
 
-            - name: Use Node.js 20.x
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.19.0"
-
-            - name: Install dependencies
-              run: |
-                  rm -f package-lock.json
-                  yarn install --frozen-lockfile
-
-            - name: Generate site
-              run: yarn generate
-
-            - name: Deploy to GitHub Pages 🚀
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: .output/public
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .output/public
