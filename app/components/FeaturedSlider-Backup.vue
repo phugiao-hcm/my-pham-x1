@@ -1,37 +1,48 @@
 <template>
   <div class="w-full">
     <swiper
-      :modules="[Navigation, Autoplay, Pagination]"
       :slides-per-view="1"
       :loop="true"
       :autoplay="{ delay: 3000 }"
       :pagination="{ clickable: true }"
-      :navigation="true"
-      class="aspect-[16/9] sm:aspect-[4/3] md:aspect-[3/2] lg:aspect-[16/6]"
+      class="h-screen"
     >
       <swiper-slide
         v-for="(product, index) in products"
         :key="index"
         class="relative w-full h-full"
       >
-        <NuxtLink :to="`/products/${index}`" class="block w-full h-full">
-          <img
-            :src="product.image"
-            alt=""
-            class="w-full h-full object-contain sm:object-cover object-center transition-all duration-300"
-          />
-        </NuxtLink>
+        <img
+          :src="product.image"
+          alt=""
+          class="w-full h-full object-cover object-center"
+        />
+        <!-- <div
+          class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center px-6"
+        >
+          <h2 class="text-5xl md:text-7xl font-semibold mb-4 drop-shadow-lg">
+            {{ product.name }}
+          </h2>
+          <p class="text-xl md:text-2xl mb-6 max-w-2xl drop-shadow-md">
+            {{ product.description }}
+          </p>
+          <button
+            class="bg-white text-black text-lg px-6 py-3 rounded-full hover:bg-gray-200 transition"
+          >
+            Mua ngay
+          </button>
+        </div> -->
       </swiper-slide>
     </swiper>
   </div>
 </template>
 
+
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 const products = [
   {
@@ -57,11 +68,3 @@ const products = [
   },
 ];
 </script>
-
-<style scoped>
-.swiper-button-prev,
-.swiper-button-next {
-  color: white; /* hoặc dùng Tailwind thêm vào global */
-  fill: white !important;
-}
-</style>
